@@ -1,6 +1,6 @@
 export type ActionTodos =
   | { type: 'ADD', payload: { todo: string, completed: boolean } }
-  | { type: 'REMOVE', payload: { todo: string } }
+  | { type: 'REMOVE', payload: { todo: string } };
 
 interface State {
 
@@ -9,31 +9,27 @@ interface State {
 }
 
 const todoReducer = (state: State, action: ActionTodos): State => {
-
-  const { type, payload } = action
+  const { type, payload } = action;
 
   switch (type) {
-    case "ADD":
+    case 'ADD':
       return {
         ...state,
         todos: [
           ...state.todos,
           { todo: payload.todo, completed: false },
         ],
-      }
-    case "REMOVE":
+      };
+    case 'REMOVE':
       return {
         ...state,
-        todos: state.todos.filter((todo) => todo.todo !== payload.todo)
+        todos: state.todos.filter((todo) => todo.todo !== payload.todo),
 
-      }
+      };
 
     default:
-      return state
+      return state;
   }
+};
 
-
-}
-
-
-export default todoReducer
+export default todoReducer;
